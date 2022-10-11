@@ -29,7 +29,7 @@ const HomeRoutes = [
     },
   },
   {
-    path: '/reports',
+    path: '/reports/:id',
     exact: true,
     component: lazy(() => import('../../views/reports/')),
     meta: {

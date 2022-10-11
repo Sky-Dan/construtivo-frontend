@@ -1,9 +1,10 @@
 import { Table } from 'reactstrap';
 // import { useState, useEffect } from 'react';
 // import { api } from '../../services/api';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const notasUsers = () => {
+  const { id } = useParams();
   //   const [students, setStudents] = useState([]);
   //   const { id } = useParams();
   //   const handleResults = async () => {
@@ -22,6 +23,7 @@ const notasUsers = () => {
   //   }, []);
   return (
     <>
+      <h1>Etapa {id}</h1>
       {/* {!students ? null : ( */}
       <Table responsive>
         <thead>
