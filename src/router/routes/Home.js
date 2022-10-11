@@ -20,56 +20,15 @@ const HomeRoutes = [
     },
   },
   {
-    path: '/activ-history',
+    path: '/cadastro',
     exact: true,
-    component: lazy(() => import('../../views/activ-history')),
+    component: lazy(() => import('../../views/cadastro/')),
     meta: {
       action: 'defaultUser',
       resource: 'all',
     },
   },
-  {
-    path: '/activ-history/grades-labirinto-history',
-    exact: true,
-    component: lazy(() =>
-      import('../../views/activ-history/grades/gradesLabirintoHistory')
-    ),
-    meta: {
-      action: 'defaultUser',
-      resource: 'all',
-    },
-  },
-  {
-    path: '/activ-history/grades-ponte-history',
-    exact: true,
-    component: lazy(() =>
-      import('../../views/activ-history/grades/gradesPonteHistory')
-    ),
-    meta: {
-      action: 'defaultUser',
-      resource: 'all',
-    },
-  },
-  {
-    path: '/activ-history/video',
-    exact: true,
-    component: lazy(() =>
-      import('../../views/activ-history/videos/videoHistory')
-    ),
-    meta: {
-      action: 'defaultUser',
-      resource: 'all',
-    },
-  },
-  {
-    path: '/activ-math',
-    exact: true,
-    component: lazy(() => import('../../views/activ-math/')),
-    meta: {
-      action: 'defaultUser',
-      resource: 'all',
-    },
-  },
+  
 ];
 
 export default HomeRoutes;

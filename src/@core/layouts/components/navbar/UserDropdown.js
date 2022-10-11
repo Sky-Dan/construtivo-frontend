@@ -52,17 +52,17 @@ const UserDropdown = () => {
           {/* <span className='user-name'>&nbsp;&nbsp;&nbsp;&nbsp;{(userData && userData.role) || 'Professor'}</span> */}
           <span className="user-name font-weight-bold">
             <Button type="button" color="primary" outline>
-              {(userData && userData['username']) || 'Nome do Professor'}
+              {(userData && userData['username']) || 'Master'}
             </Button>
           </span>
         </div>
       </DropdownToggle>
       <DropdownMenu end>
-        <DropdownItem tag={Link} to="/pages/profile">
+        {/* <DropdownItem tag={Link} to="/pages/profile">
           <User size={14} className="mr-75" />
           <span className="align-middle">Profile</span>
         </DropdownItem>
-        <DropdownItem divider />
+        <DropdownItem divider /> */}
         <DropdownItem
           tag={Link}
           to="/login"
