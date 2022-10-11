@@ -23,17 +23,10 @@ import {
 
 const createUser = () => {
   const history = useHistory();
-  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState();
+  const [register, setRegister] = useState('');
+  // const [date, setDate] = useState('');
 
-  const roleOptions = [
-    { value: 'admin', label: 'admin' },
-    { value: 'teacher', label: 'teacher' },
-  ];
-
-  // ** On form submit if there are no errors then go to next step
   async function onSubmit() {
     try {
       await api.post('/users', {
@@ -74,27 +67,41 @@ const createUser = () => {
             </CardText>
             <Form className="auth-login-form mt-2">
               <FormGroup>
-                <Label className="form-label" for="teacher-name">
+                <Label className="form-label" for="user-name">
                   Nome
                 </Label>
                 <Input
                   autoFocus
                   type="text"
                   value={name}
-                  id="teacher-name"
-                  name="teacher-name"
+                  id="user-name"
+                  name="user-name"
                   placeholder="John Doe"
                   onChange={(e) => setName(e.target.value)}
                 />
-                {/* <Label className="form-label mt-2" for="teacher-password">
-                  Password
+                <Label className="form-label mt-2" for="user-register">
+                  Registro
                 </Label>
-                <InputPasswordToggle
-                  value={password}
-                  id="teacher-password"
-                  name="teacher-password"
-                  className="input-group-merge"
-                  onChange={(e) => setPassword(e.target.value)}
+                <Input
+                  autoFocus
+                  type="text"
+                  value={register}
+                  id="user-register"
+                  name="user-register"
+                  placeholder="000000"
+                  onChange={(e) => setRegister(e.target.value)}
+                />
+                {/* <Label className="form-label mt-2" for="user-date">
+                  Data
+                </Label>
+                <Input
+                  autoFocus
+                  type="text"
+                  value={date}
+                  id="user-date"
+                  name="user-date"
+                  placeholder="00/00/0000"
+                  onChange={(e) => setDate(e.target.value)}
                 /> */}
               </FormGroup>
               <Button color="primary" onClick={() => onSubmit()}>
