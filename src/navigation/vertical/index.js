@@ -9,7 +9,7 @@ const defaultRoutes = [
   },
   {
     id: 'cadastrar',
-    title: 'Cadastrar Funcionário',
+    title: 'Cadastrar Usuário',
     icon: <Home size={20} />,
     navLink: '/cadastro',
   },
