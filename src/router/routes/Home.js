@@ -28,7 +28,15 @@ const HomeRoutes = [
       resource: 'all',
     },
   },
-  
+  {
+    path: '/reports',
+    exact: true,
+    component: lazy(() => import('../../views/reports/')),
+    meta: {
+      action: 'defaultUser',
+      resource: 'all',
+    },
+  },
 ];
 
 export default HomeRoutes;

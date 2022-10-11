@@ -1,4 +1,5 @@
 import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import '@styles/react/libs/charts/apex-charts.scss';
 import '@styles/base/pages/dashboard-ecommerce.scss';
 import StatsHorizontal from '@components/widgets/stats/StatsHorizontal';
@@ -14,13 +15,16 @@ const AnalyticsDashboard = () => {
         </Col>
       </Row>
       <Row className="match-height">
-        <Col xl="3" md="3" xs="12">
-          <StatsHorizontal
-            icon={<Box size={21} />}
-            color={color}
-            stats="1 Etapa"
-          />
-        </Col>
+        <Link to="/reports">
+          <Col xl="3" md="3" xs="12">
+            <StatsHorizontal
+              icon={<Box size={21} />}
+              color={color}
+              stats="1 Etapa"
+            />
+          </Col>
+        </Link>
+
         <Col xl="3" md="3" xs="12">
           <StatsHorizontal
             icon={<Box size={21} />}
