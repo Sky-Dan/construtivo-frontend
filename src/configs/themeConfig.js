@@ -3,7 +3,7 @@
 //Template config options
 const themeConfig = {
   app: {
-    appName: 'ESCOLA',
+    appName: 'CRIATIVO',
     appLogoImage: require('@src/assets/images/logo/logo.png').default,
   },
   layout: {
