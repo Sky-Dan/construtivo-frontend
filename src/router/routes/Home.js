@@ -29,6 +29,15 @@ const HomeRoutes = [
     },
   },
   {
+    path: '/listUsers',
+    exact: true,
+    component: lazy(() => import('../../views/usersList/')),
+    meta: {
+      action: 'defaultUser',
+      resource: 'all',
+    },
+  },
+  {
     path: '/reports/:id',
     exact: true,
     component: lazy(() => import('../../views/reports/')),

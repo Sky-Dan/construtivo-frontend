@@ -13,6 +13,12 @@ const defaultRoutes = [
     icon: <Home size={20} />,
     navLink: '/cadastro',
   },
+  {
+    id: 'listUsers',
+    title: 'Lista Usuários',
+    icon: <Home size={20} />,
+    navLink: '/listUsers',
+  },
   // {
   //   id: 'classes',
   //   title: 'Disciplinas',

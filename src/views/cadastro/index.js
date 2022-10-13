@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 import '@styles/base/pages/page-auth.scss';
-import { useForm } from 'react-hook-form';
-import InputPasswordToggle from '@components/input-password-toggle';
-import CreatableSelect from 'react-select/creatable';
+import Flatpickr from 'react-flatpickr';
+import DateTimePicker from 'react-datetime-picker';
 import { toast } from 'react-toastify';
 import { ErrorToast, SuccessToast } from '../components/toasts/Error';
 import { api } from '../../services/api';
@@ -25,25 +23,21 @@ const createUser = () => {
   const history = useHistory();
   const [name, setName] = useState('');
   const [register, setRegister] = useState('');
-  // const [date, setDate] = useState('');
+  const [picker, setPicker] = useState(new Date());
+  console.log(setPicker);
 
   async function onSubmit() {
     try {
-      await api.post('/users', {
+      await api.post('/students', {
         name,
-        email,
-        password,
-        role,
-        school_id: '62e437521fc72c0ed1f9c752',
+        registration: register,
+        avaliation_date: picker,
       });
 
-      toast.success(
-        <SuccessToast description="Professor criado com Sucesso!" />,
-        {
-          icon: false,
-          hideProgressBar: true,
-        }
-      );
+      toast.success(<SuccessToast description="User criado com Sucesso!" />, {
+        icon: false,
+        hideProgressBar: true,
+      });
       history.push('/dash');
     } catch (error) {
       console.log(error);
@@ -91,18 +85,15 @@ const createUser = () => {
                   placeholder="000000"
                   onChange={(e) => setRegister(e.target.value)}
                 />
-                {/* <Label className="form-label mt-2" for="user-date">
-                  Data
+                <Label className="form-label mt-2" for="date-time-picker">
+                  Date & Time
                 </Label>
-                <Input
-                  autoFocus
-                  type="text"
-                  value={date}
-                  id="user-date"
-                  name="user-date"
-                  placeholder="00/00/0000"
-                  onChange={(e) => setDate(e.target.value)}
-                /> */}
+                <div>
+                  <DateTimePicker
+                    value={picker}
+                    onChange={(date) => setPicker(date)}
+                  />
+                </div>
               </FormGroup>
               <Button color="primary" onClick={() => onSubmit()}>
                 Cadastrar

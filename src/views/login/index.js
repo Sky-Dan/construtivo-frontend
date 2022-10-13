@@ -63,7 +63,7 @@ const Login = () => {
         <Card>
           <CardBody>
             <div className="title">
-              <h2 className="brand-text text-primary">CRIATIVO </h2>
+              <h2 className="brand-text text-primary">CRIATIVO</h2>
             </div>
             <div className="title">
               <CardTitle tag="h4" className="mb-1">
