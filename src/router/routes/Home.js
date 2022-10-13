@@ -38,7 +38,7 @@ const HomeRoutes = [
     },
   },
   {
-    path: '/reports/:id',
+    path: '/reports/:stage',
     exact: true,
     component: lazy(() => import('../../views/reports/')),
     meta: {

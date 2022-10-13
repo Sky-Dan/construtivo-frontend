@@ -65,7 +65,6 @@ const createUser = () => {
                   Nome
                 </Label>
                 <Input
-                  autoFocus
                   type="text"
                   value={name}
                   id="user-name"
@@ -77,7 +76,6 @@ const createUser = () => {
                   Registro
                 </Label>
                 <Input
-                  autoFocus
                   type="text"
                   value={register}
                   id="user-register"

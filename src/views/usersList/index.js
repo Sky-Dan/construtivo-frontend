@@ -2,9 +2,8 @@ import { Table } from 'reactstrap';
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { formatDateHour } from '../../utility/Utils';
-// import { useParams } from 'react-router-dom';
+
 const usersList = () => {
-  //   const { id } = useParams();
   const [students, setStudents] = useState([]);
 
   const handleResults = async () => {
