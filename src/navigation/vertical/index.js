@@ -2,6 +2,12 @@ import { Home, Book, Video } from 'react-feather';
 
 const defaultRoutes = [
   {
+    id: 'start',
+    title: 'Iniciar Atividade',
+    icon: <Home size={20} />,
+    navLink: '/iniciar',
+  },
+  {
     id: 'relatorios',
     title: 'Relatórios',
     icon: <Home size={20} />,

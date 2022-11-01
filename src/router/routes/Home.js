@@ -20,6 +20,15 @@ const HomeRoutes = [
     },
   },
   {
+    path: '/iniciar',
+    exact: true,
+    component: lazy(() => import('../../views/start/')),
+    meta: {
+      action: 'defaultUser',
+      resource: 'all',
+    },
+  },
+  {
     path: '/cadastro',
     exact: true,
     component: lazy(() => import('../../views/cadastro/')),

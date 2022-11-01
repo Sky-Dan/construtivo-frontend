@@ -52,7 +52,7 @@ const UserDropdown = () => {
           {/* <span className='user-name'>&nbsp;&nbsp;&nbsp;&nbsp;{(userData && userData.role) || 'Professor'}</span> */}
           <span className="user-name font-weight-bold">
             <Button type="button" color="primary" outline>
-              {(userData && userData['username']) || 'Master'}
+              {(userData && userData['username']) || 'Opções'}
             </Button>
           </span>
         </div>

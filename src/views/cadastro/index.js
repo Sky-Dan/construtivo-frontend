@@ -41,7 +41,7 @@ const createUser = () => {
       history.push('/dash');
     } catch (error) {
       console.log(error);
-      toast.error(<ErrorToast description="Error, there was an error " />, {
+      toast.error(<ErrorToast description="Erro: Usuário não criado!" />, {
         icon: false,
         hideProgressBar: true,
       });
@@ -84,7 +84,7 @@ const createUser = () => {
                   onChange={(e) => setRegister(e.target.value)}
                 />
                 <Label className="form-label mt-2" for="date-time-picker">
-                  Date & Time
+                  Data da Avaliação
                 </Label>
                 <div>
                   <DateTimePicker
