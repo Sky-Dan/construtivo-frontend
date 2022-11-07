@@ -12,7 +12,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          CRIATIVO
+          Construtivo
         </a>
         <span className="d-none d-sm-inline-block">, All rights Reserved</span>
       </span>

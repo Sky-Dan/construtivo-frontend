@@ -27,6 +27,35 @@ const start = () => {
     }
   };
 
+  // const getResults = async () => {
+  //   try {
+  //     const student = await api.get('/activity/actual');
+  //     const results = await api.get(`/results/student/${student.registration}`);
+
+  //     results.array.forEach(result => {
+  //       if (result.stage === 7) {
+  //         return true;
+  //       }        
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error(<ErrorToast description={error}/>, {
+  //       icon: false,
+  //       hideProgressBar: true,
+  //     });
+  //   }
+  // };
+
+  // if (getResults()) {
+  //   return (
+  //     <>
+  //       <div className='m-5'>
+  //       <h1>O briefing está de acordo?</h1>
+
+  //       </div>
+  //     </>
+  //   )
+  // }
   return (
     <>
       <h1>Iniciar atividade</h1>
@@ -36,6 +65,7 @@ const start = () => {
         <Input className="mb-2" type="text" onChange={(e) => setRegister(e.target.value)}/>
         <Button color="primary" onClick={() => postRegister()}>Iniciar</Button>
       </div>
+      
     </>
   );
 };
