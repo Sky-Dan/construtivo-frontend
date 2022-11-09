@@ -35,11 +35,9 @@ const start = () => {
 
       await api.post(`/results/`,
         { 
-          body: {
-            stage: 7,
-            registration: student.data.actual_student.registration,
-            grade: avaliation 
-          }
+          stage: 7,
+          registration: student.data.actual_student.registration,
+          grade: avaliation 
         }
       );
       
