@@ -8,6 +8,7 @@ const start = () => {
   const [register, setRegister] = useState('');
   const [grades, setGrades] = useState([]);
   const [situation, setSituation] = useState(false);
+  const [available, setAvailable] = useState()
 
   const postRegister = async () => {
     try {
@@ -62,7 +63,15 @@ const start = () => {
       const student = await api.get('/activity/actual');
       const results = await api.get(`/results/student/${student.data.actual_student.registration}`);
       setGrades(results.data.results);
-
+      
+      if (grades.length > 0 && grades.length < 7) {
+        setAvailable(false)
+      }
+      
+      if (grades.length > 0 && grades.length < 6) {
+        setSituation(false)
+      }
+      
       grades.forEach(grade => {
         if (grade.stage === 6) {
           setSituation(true);
@@ -70,6 +79,7 @@ const start = () => {
 
         if (grade.stage === 7) {
           setSituation(false);
+          setAvailable(true);
         }
       });      
     } catch (error) {
@@ -86,33 +96,38 @@ const start = () => {
   }, [grades])
 
   return (
-    situation === true ? (
+    available === true ? (
       <>
-        <h1>Iniciar atividade</h1>
-        <p>Digite o registro do aluno que irá iniciar a atividade.</p>
-        <div className='mt-5'>
-          <Label>Registro do Aluno</Label>
-          <Input className="mb-2" type="text" onChange={(e) => setRegister(e.target.value)}/>
-          <Button color="primary" onClick={() => postRegister()}>Iniciar</Button>
-        </div>
-        <div className='m-5 text-center'>
-        <h1>O briefing está de acordo?</h1>
-          <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(true)}>Sim</Button>
-          <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(false)}>Não</Button>
-        </div>
-      </>
+          <h1>Iniciar atividade</h1>
+          <p>Digite o registro do aluno que irá iniciar a atividade.</p>
+          <div className='mt-5'>
+              <Label>Registro do Aluno</Label>
+              <Input className="mb-2" type="text" onChange={(e) => setRegister(e.target.value)} />
+              <Button color="primary" onClick={() => {
+                  postRegister();
+                  setAvailable(false);
+                }
+              }>Iniciar</Button>
+            </div>  
+          </>
+      
     ) : (
-        <>
-        <h1>Iniciar atividade</h1>
-        <p>Digite o registro do aluno que irá iniciar a atividade.</p>
-        <div className='mt-5'>
-            <Label>Registro do Aluno</Label>
-            <Input className="mb-2" type="text" onChange={(e) => setRegister(e.target.value)} />
-            <Button color="primary" onClick={() => postRegister()}>Iniciar</Button>
-          </div>  
-        </>
-      )
+        situation === true ? (
+          <>
+            <div className='m-5 text-center'>
+              <h1>O briefing está de acordo?</h1>
+              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(true)}>Sim</Button>
+              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(false)}>Não</Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1>Aguarde para a atividade oral</h1>
+            <p>Quando o aluno terminar a etapa 6, disponibilizaremos a opção de avaliação.</p>
+          </>
+        )
     )
+  )
 };
 
 export default start;
