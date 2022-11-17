@@ -32,7 +32,7 @@ const notasUsers = () => {
         <Table responsive>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>REGISTRO</th>
               <th>ACERTOS</th>
             </tr>
           </thead>
@@ -40,7 +40,7 @@ const notasUsers = () => {
             {notas.map((nota) => (
               <tr>
                 <td>
-                  <span className="align-middle">{nota.student_id}</span>
+                  <span className="align-middle">{nota.registration}</span>
                 </td>
                 <td>
                   <span className="align-middle">{nota.grade}</span>
