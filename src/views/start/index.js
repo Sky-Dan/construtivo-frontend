@@ -116,8 +116,8 @@ const start = () => {
           <>
             <div className='m-5 text-center'>
               <h1>O briefing está de acordo?</h1>
-              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(true)}>Sim</Button>
-              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing(false)}>Não</Button>
+              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing('O briefing está de acordo')}>Sim</Button>
+              <Button className="m-4 mt-3" color="primary" onClick={() => postBriefing('O briefing não está de acordo')}>Não</Button>
             </div>
           </>
         ) : (

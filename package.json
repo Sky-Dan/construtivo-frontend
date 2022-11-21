@@ -2,6 +2,14 @@
   "name": "vuexy-react-admin-dashboard",
   "version": "8.0.0",
   "private": true,
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "lint:fix": "eslint src/**/*.js --fix"
+  },
   "dependencies": {
     "@casl/ability": "^5.2.2",
     "@casl/react": "^2.1.1",
@@ -95,14 +103,6 @@
     "xlsx": "^0.17.3",
     "yarn": "^1.21.1",
     "yup": "^0.32.8"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx",
-    "lint:fix": "eslint src/**/*.js --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
