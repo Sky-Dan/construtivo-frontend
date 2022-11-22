@@ -9,15 +9,21 @@ const start = () => {
   const [grades, setGrades] = useState([]);
   const [situation, setSituation] = useState(false);
   const [available, setAvailable] = useState();
+  const [canceled, setCanceled] = useState();
 
   const postRegister = async () => {
     try {
       await api.post(`/activity/start/${register}`);
 
-      toast.success(<SuccessToast description="Registro enviado!" />, {
-        icon: false,
-        hideProgressBar: true,
-      });
+      setCanceled(false);
+
+      toast.success(
+        <SuccessToast description="Registro enviado!" />,
+        {
+          icon: false,
+          hideProgressBar: true,
+        }
+      );
     } catch (error) {
       console.log(error);
       toast.error(<ErrorToast description="Registrado inválido!" />, {
@@ -50,6 +56,12 @@ const start = () => {
     }
   };
 
+  const cancelActivity = () => {
+    setCanceled(true);
+    setAvailable(false);
+    setSituation(false);
+  }
+
   const getGrades = async () => {
     try {
       const student = await api.get('/activity/actual');
@@ -59,7 +71,9 @@ const start = () => {
       setGrades(results.data.results);
 
       if (grades.length > 0 && grades.length < 7) {
-        setAvailable(false);
+        if (canceled === false) {
+          setAvailable(false)
+        }
       }
 
       if (grades.length > 0 && grades.length < 6) {
@@ -68,7 +82,9 @@ const start = () => {
 
       grades.forEach((grade) => {
         if (grade.stage === 6) {
-          setSituation(true);
+          if (canceled === false) {
+            setSituation(true)
+          }
         }
 
         if (grade.stage === 7) {
@@ -130,6 +146,12 @@ const start = () => {
           Não
         </Button>
       </div>
+      <div className='m-5 text-center'>
+        <Button className="m-4 mt-3" color="primary" onClick={
+          () => cancelActivity()
+          }
+        >Cancelar Atividade</Button>
+      </div>
     </>
   ) : (
     <>
@@ -138,6 +160,12 @@ const start = () => {
         Quando o aluno terminar a etapa 6, disponibilizaremos a opção de
         avaliação.
       </p>
+      <div className='m-5 text-center'>
+        <Button className="m-4 mt-3" color="primary" onClick={
+          () => cancelActivity()
+          }
+        >Cancelar Atividade</Button>
+      </div>
     </>
   );
 };
