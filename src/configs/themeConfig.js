@@ -3,8 +3,8 @@
 //Template config options
 const themeConfig = {
   app: {
-    appName: 'CONSTRUTIVO',
-    appLogoImage: require('@src/assets/images/logo/logo.png').default,
+    appName: 'Ajinomoto',
+    appLogoImage: require('@src/assets/images/logo/ajinomoto-logo.png').default,
   },
   layout: {
     isRTL: false,

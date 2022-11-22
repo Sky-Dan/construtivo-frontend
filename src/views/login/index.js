@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import Avatar from '@components/avatar';
+import themeConfig from '@configs/themeConfig';
 //import useJwt from '@src/auth/jwt/useJwt'
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -63,7 +64,7 @@ const Login = () => {
         <Card>
           <CardBody>
             <div className="title">
-              <h2 className="brand-text text-primary">CONSTRUTIVO</h2>
+              <img src={themeConfig.app.appLogoImage} width="160" height="30" />
             </div>
             <div className="title">
               <CardTitle tag="h4" className="mb-1">
