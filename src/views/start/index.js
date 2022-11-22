@@ -9,6 +9,7 @@ const start = () => {
   const [grades, setGrades] = useState([]);
   const [situation, setSituation] = useState(false);
   const [available, setAvailable] = useState()
+  const [cancel, setCancel] = useState();
 
   const postRegister = async () => {
     try {
@@ -41,6 +42,8 @@ const start = () => {
           grade: avaliation 
         }
       );
+
+      setCancel(false);
       
       toast.success(
         <SuccessToast description="Avalição enviada!" />,
@@ -65,7 +68,11 @@ const start = () => {
       setGrades(results.data.results);
       
       if (grades.length > 0 && grades.length < 7) {
-        setAvailable(false)
+        if (cancel === true) {
+          setAvailable(true);
+        } else {
+          setAvailable(false);
+        }
       }
       
       if (grades.length > 0 && grades.length < 6) {
@@ -124,6 +131,9 @@ const start = () => {
           <>
             <h1>Aguarde para a atividade oral</h1>
             <p>Quando o aluno terminar a etapa 6, disponibilizaremos a opção de avaliação.</p>
+            <div className='m-5 text-center'>
+              <Button className='m-4 mt-3' color='primary' onClick={() => setCancel(true)}>Cancelar atividade</Button>
+            </div>
           </>
         )
     )
