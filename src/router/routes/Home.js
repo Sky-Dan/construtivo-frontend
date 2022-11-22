@@ -55,6 +55,15 @@ const HomeRoutes = [
       resource: 'all',
     },
   },
+  {
+    path: '/resumo',
+    exact: true,
+    component: lazy(() => import('../../views/resumo/')),
+    meta: {
+      action: 'defaultUser',
+      resource: 'all',
+    },
+  },
 ];
 
 export default HomeRoutes;

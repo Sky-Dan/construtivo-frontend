@@ -16,6 +16,16 @@ const AnalyticsDashboard = () => {
       </Row>
       <Row className="match-height">
         <Col xl="3" md="3" xs="12">
+          <Link to="/resumo">
+            <StatsHorizontal
+              icon={<Box size={21} />}
+              color={color}
+              stats="Resumo"
+              // statTitle="Etapa"
+            />
+          </Link>
+        </Col>
+        <Col xl="3" md="3" xs="12">
           <Link to="/reports/1">
             <StatsHorizontal
               icon={<Box size={21} />}
