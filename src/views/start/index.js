@@ -62,12 +62,6 @@ const start = () => {
     setSituation(false);
   }
 
-  const cancelActivity = () => {
-    setCanceled(true);
-    setAvailable(false);
-    setSituation(false);
-  }
-
   const getGrades = async () => {
     try {
       const student = await api.get('/activity/actual');
