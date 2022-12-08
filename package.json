@@ -2,6 +2,9 @@
   "name": "vuexy-react-admin-dashboard",
   "version": "8.0.0",
   "private": true,
+  "engines": {
+    "node": "16.14.2"
+  },
   "dependencies": {
     "@casl/ability": "^5.2.2",
     "@casl/react": "^2.1.1",
