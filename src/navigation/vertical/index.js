@@ -1,75 +1,30 @@
-import { Home, Book, Video } from 'react-feather';
+import { Play, List, Book, Plus } from 'react-feather';
 
 const defaultRoutes = [
   {
     id: 'start',
     title: 'Iniciar Atividade',
-    icon: <Home size={20} />,
+    icon: <Play size={20} />,
     navLink: '/iniciar',
   },
   {
     id: 'relatorios',
     title: 'Relatórios',
-    icon: <Home size={20} />,
+    icon: <Book size={20} />,
     navLink: '/dash',
   },
   {
     id: 'cadastrar',
     title: 'Cadastrar Usuário',
-    icon: <Home size={20} />,
+    icon: <Plus size={20} />,
     navLink: '/cadastro',
   },
   {
     id: 'listUsers',
     title: 'Lista Usuários',
-    icon: <Home size={20} />,
+    icon: <List size={20} />,
     navLink: '/listUsers',
   },
-  // {
-  //   id: 'classes',
-  //   title: 'Disciplinas',
-  //   icon: <Home size={20} />,
-  //   children: [
-  //     {
-  //       id: 'history',
-  //       title: 'História',
-  //       children: [
-  //         {
-  //           id: 'ativ-historia',
-  //           title: 'Atividades',
-  //           icon: <Book size={20} />,
-  //           navLink: '/activ-history',
-  //         },
-  //         {
-  //           id: 'video-historia',
-  //           title: 'Vídeo',
-  //           icon: <Video size={20} />,
-  //           navLink: '/activ-history/video',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       id: 'math',
-  //       title: 'Matemática',
-  //       children: [
-  //         {
-  //           id: 'activ-math',
-  //           title: 'Atividades',
-  //           icon: <Book size={20} />,
-  //           navLink: '/activ-math',
-  //         },
-  //         {
-  //           id: 'video-matematica',
-  //           title: 'Vídeo',
-  //           icon: <Video size={20} />,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // {
-  //   header: 'Menu'
-  // },
 ];
 
 export default defaultRoutes;
