@@ -10,6 +10,9 @@
     "lint": "eslint src/**/*.js src/**/*.jsx",
     "lint:fix": "eslint src/**/*.js --fix"
   },
+  "engines": {
+    "node": "16.*"
+  },
   "dependencies": {
     "@casl/ability": "^5.2.2",
     "@casl/react": "^2.1.1",
