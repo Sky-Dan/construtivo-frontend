@@ -58,7 +58,7 @@ const start = () => {
 
   const cancelActivity = () => {
     setCanceled(true);
-    setAvailable(false);
+    setAvailable(true);
     setSituation(false);
   }
 
@@ -73,25 +73,28 @@ const start = () => {
       if (grades.length > 0 && grades.length < 7) {
         if (canceled === false) {
           setAvailable(false)
-        }
-      }
-
-      if (grades.length > 0 && grades.length < 6) {
-        setSituation(false);
-      }
-
-      grades.forEach((grade) => {
-        if (grade.stage === 6) {
-          if (canceled === false) {
-            setSituation(true)
+          if (grades.length > 0 && grades.length < 6) {
+            setSituation(false);
           }
+          grades.forEach((grade) => {
+            if (grade.stage === 6) {
+              setSituation(true)
+            }
+          });
         }
-
+        if (canceled) {
+          setAvailable(true);
+          setSituation(false);
+        }
+      }
+      
+      grades.forEach((grade) => {
         if (grade.stage === 7) {
           setSituation(false);
           setAvailable(true);
         }
       });
+
     } catch (error) {
       console.log(error);
       toast.error(<ErrorToast description={error} />, {
@@ -120,7 +123,7 @@ const start = () => {
           color="primary"
           onClick={() => {
             postRegister();
-            setAvailable(false);
+            setCanceled(false);
           }}
         >
           Iniciar
@@ -148,7 +151,7 @@ const start = () => {
       </div>
       <div className='m-5 text-center'>
         <Button className="m-4 mt-3" color="primary" onClick={
-          () => cancelActivity()
+            () => cancelActivity()
           }
         >Cancelar Atividade</Button>
       </div>
@@ -162,7 +165,7 @@ const start = () => {
       </p>
       <div className='m-5 text-center'>
         <Button className="m-4 mt-3" color="primary" onClick={
-          () => cancelActivity()
+            () => cancelActivity()
           }
         >Cancelar Atividade</Button>
       </div>
