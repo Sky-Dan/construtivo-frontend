@@ -56,7 +56,7 @@ const start = () => {
     }
   };
 
-  const cancelActivity = () => {
+  const cancelActivity = async () => {
     setCanceled(true);
     setAvailable(true);
     setSituation(false);
@@ -89,6 +89,9 @@ const start = () => {
       }
       
       grades.forEach((grade) => {
+        if (grade.stage === 6) {
+          setSituation(true)
+        }
         if (grade.stage === 7) {
           setSituation(false);
           setAvailable(true);
@@ -139,14 +142,14 @@ const start = () => {
           color="primary"
           onClick={() => postBriefing('O briefing está de acordo')}
         >
-          Sim
+          Satisfatório
         </Button>
         <Button
           className="m-4 mt-3"
           color="primary"
           onClick={() => postBriefing('O briefing não está de acordo')}
         >
-          Não
+          Não Satisfatório
         </Button>
       </div>
       <div className='m-5 text-center'>
