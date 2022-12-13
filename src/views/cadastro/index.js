@@ -40,7 +40,7 @@ const createUser = () => {
       });
       history.push('/dash');
     } catch (error) {
-      console.log(error);
+      console.log(error.length());
       toast.error(<ErrorToast description="Erro: Usuário não criado!" />, {
         icon: false,
         hideProgressBar: true,
@@ -54,10 +54,10 @@ const createUser = () => {
         <Card className="mb-0">
           <CardBody>
             <CardTitle tag="h4" className="mb-1">
-              Cadastre o Usuário
+              Cadastre o Aluno
             </CardTitle>
             <CardText className="mb-2">
-              Adicione os dados para cadastrar o usuário!
+              Adicione os dados para cadastrar o aluno!
             </CardText>
             <Form className="auth-login-form mt-2">
               <FormGroup>

@@ -8,14 +8,11 @@ const start = () => {
   const [register, setRegister] = useState('');
   const [grades, setGrades] = useState([]);
   const [situation, setSituation] = useState(false);
-  const [available, setAvailable] = useState();
-  const [canceled, setCanceled] = useState();
+  const [available, setAvailable] = useState(true);
 
   const postRegister = async () => {
     try {
       await api.post(`/activity/start/${register}`);
-
-      setCanceled(false);
 
       toast.success(
         <SuccessToast description="Registro enviado!" />,
@@ -24,6 +21,8 @@ const start = () => {
           hideProgressBar: true,
         }
       );
+      // eslint-disable-next-line no-use-before-define
+      getGrades();
     } catch (error) {
       console.log(error);
       toast.error(<ErrorToast description="Registrado inválido!" />, {
@@ -57,50 +56,51 @@ const start = () => {
   };
 
   const cancelActivity = async () => {
-    setCanceled(true);
     setAvailable(true);
     setSituation(false);
+    toast.done(<SuccessToast description="Avaliação finalizada!" />, {
+      icon: false,
+      hideProgressBar: true,
+    });
+    await api.delete('/activity/actual')
   }
 
   const getGrades = async () => {
     try {
-      const student = await api.get('/activity/actual');
-      const results = await api.get(
-        `/results/student/${student.data.actual_student.registration}`
-      );
-      setGrades(results.data.results);
+      const student = (await api.get('/activity/actual')).data.actual_student;
 
-      if (grades.length > 0 && grades.length < 7) {
-        if (canceled === false) {
+      if (!student) {
+        setAvailable(true);
+        setSituation(false);
+      }
+      
+      if (student) {
+        const results = await api.get(
+          `/results/student/${student.registration}`
+        );
+        setGrades(results.data.results);
+
+        if (grades.length < 7) {
           setAvailable(false)
           if (grades.length > 0 && grades.length < 6) {
             setSituation(false);
           }
-          grades.forEach((grade) => {
-            if (grade.stage === 6) {
-              setSituation(true)
-            }
-          });
         }
-        if (canceled) {
-          setAvailable(true);
-          setSituation(false);
-        }
+        
+        grades.forEach((grade) => {
+          if (grade.stage === 6) {
+            setSituation(true)
+          }
+          if (grade.stage === 7) {
+            setSituation(false);
+            setAvailable(true);
+            cancelActivity();
+          }
+        });
       }
-      
-      grades.forEach((grade) => {
-        if (grade.stage === 6) {
-          setSituation(true)
-        }
-        if (grade.stage === 7) {
-          setSituation(false);
-          setAvailable(true);
-        }
-      });
-
     } catch (error) {
-      console.log(error);
-      toast.error(<ErrorToast description={error} />, {
+      console.log(error.length);
+      toast.error(<ErrorToast description={error.message} />, {
         icon: false,
         hideProgressBar: true,
       });
@@ -108,7 +108,7 @@ const start = () => {
   };
 
   useEffect(() => {
-    getGrades();
+      getGrades();
   }, [grades]);
 
   return available === true ? (
@@ -126,7 +126,6 @@ const start = () => {
           color="primary"
           onClick={() => {
             postRegister();
-            setCanceled(false);
           }}
         >
           Iniciar
