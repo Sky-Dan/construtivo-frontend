@@ -6,6 +6,7 @@ const notasUsersResume = () => {
   const [registrations, setRegistrations] = useState([]);
   const [registration, setRegistration] = useState([]);
   const [group, setGroup] = useState([]);
+  // const [briefing, setBriefing] = useState([]);
 
   const handleResults = async () => {
     try {
@@ -26,6 +27,7 @@ const notasUsersResume = () => {
           registration.push({
             registration: registro.registration,
             grade: Number(registro.grade) ? Number(registro.grade) : 0,
+            briefing: Number(registro.grade) ? null : registro.grade
           });
         }
       } else {
@@ -57,6 +59,7 @@ const notasUsersResume = () => {
             <tr>
               <th>REGISTRO</th>
               <th>SOMA DOS ACERTOS</th>
+              <th>BRIEFING</th>
             </tr>
           </thead>
           <tbody>
@@ -67,6 +70,9 @@ const notasUsersResume = () => {
                 </td>
                 <td>
                   <span className="align-middle">{regi.grade}</span>
+                </td>
+                <td>
+                  <span className="align-middle">{regi.briefing}</span>
                 </td>
               </tr>
             ))}

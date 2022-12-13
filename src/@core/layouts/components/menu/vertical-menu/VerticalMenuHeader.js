@@ -13,7 +13,6 @@ const VerticalMenuHeader = (props) => {
   const {
     menuCollapsed,
     setMenuCollapsed,
-    setMenuVisibility,
     setGroupOpen,
     menuHover,
   } = props;
@@ -56,16 +55,6 @@ const VerticalMenuHeader = (props) => {
             </span>
             <img src={themeConfig.app.appLogoImage} width="160" height="30" />
           </NavLink>
-        </li>
-        <li className="nav-item nav-toggle">
-          <div className="nav-link modern-nav-toggle cursor-pointer">
-            <Toggler />
-            <X
-              onClick={() => setMenuVisibility(false)}
-              className="toggle-icon icon-x d-block d-xl-none"
-              size={20}
-            />
-          </div>
         </li>
       </ul>
     </div>

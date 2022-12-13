@@ -85,12 +85,15 @@ const start = () => {
           if (grades.length > 0 && grades.length < 6) {
             setSituation(false);
           }
+
+          grades.forEach((grade) => {
+            if (grade.stage === 6) {
+              setSituation(true)
+            }
+          });
         }
-        
+
         grades.forEach((grade) => {
-          if (grade.stage === 6) {
-            setSituation(true)
-          }
           if (grade.stage === 7) {
             setSituation(false);
             setAvailable(true);
@@ -124,7 +127,8 @@ const start = () => {
         />
         <Button
           color="primary"
-          onClick={() => {
+          onClick={ () => {
+            cancelActivity();
             postRegister();
           }}
         >

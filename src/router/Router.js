@@ -24,22 +24,20 @@ import { DefaultRoute, Routes } from './routes';
 // ** Layouts
 import BlankLayout from '@layouts/BlankLayout';
 import VerticalLayout from '@src/layouts/VerticalLayout';
-import HorizontalLayout from '@src/layouts/HorizontalLayout';
 
 const Router = () => {
   // ** Hooks
-  const { layout, setLayout, setLastLayout } = useLayout();
+  const { setLayout, setLastLayout } = useLayout();
   const { transition, setTransition } = useRouterTransition();
 
   // ** ACL Ability Context
   const ability = useContext(AbilityContext);
 
   // ** Default Layout
-  const DefaultLayout =
-    layout === 'horizontal' ? 'HorizontalLayout' : 'VerticalLayout';
+  const DefaultLayout = 'VerticalLayout';
 
   // ** All of the available layouts
-  const Layouts = { BlankLayout, VerticalLayout, HorizontalLayout };
+  const Layouts = { BlankLayout, VerticalLayout };
 
   // ** Current Active Item
   const currentActiveItem = null;
@@ -64,8 +62,6 @@ const Router = () => {
 
     return { LayoutRoutes, LayoutPaths };
   };
-
-  const WrongNetwork = lazy(() => import('@src/views/pages/misc/WrongNetwork'));
 
   const NotAuthorized = lazy(() =>
     import('@src/views/pages/misc/NotAuthorized')
