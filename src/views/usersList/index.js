@@ -74,7 +74,6 @@ const usersList = () => {
                     {formatDateHour(student.avaliation_date)}
                   </span>
                   <br></br>
-                  <Button  outline color="warning" size="sm" >Editar</Button>{' '}
                   <Button outline color="danger" size="sm" onClick={ () => setModale(true) }>Excluir</Button>
                 </td>
                 <Modal isOpen={modale}>

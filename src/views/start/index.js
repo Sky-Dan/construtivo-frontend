@@ -152,7 +152,7 @@ const start = () => {
         </Button>
       </div>
       <div className='m-5 text-center'>
-        <Button className="m-4 mt-3" color="primary" onClick={
+        <Button className="m-4 mt-3" color="danger" onClick={
             () => cancelActivity()
           }
         >Cancelar Atividade</Button>
@@ -166,7 +166,7 @@ const start = () => {
         avaliação.
       </p>
       <div className='m-5 text-center'>
-        <Button className="m-4 mt-3" color="primary" onClick={
+        <Button className="m-4 mt-3" color="danger" onClick={
             () => cancelActivity()
           }
         >Cancelar Atividade</Button>
