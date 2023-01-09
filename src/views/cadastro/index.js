@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import '@styles/base/pages/page-auth.scss';
-import Flatpickr from 'react-flatpickr';
 import DateTimePicker from 'react-datetime-picker';
 import { toast } from 'react-toastify';
 import { ErrorToast, SuccessToast } from '../components/toasts/Error';
@@ -88,6 +87,8 @@ const createUser = () => {
                 </Label>
                 <div>
                   <DateTimePicker
+                    disableClock={true}
+                    locale='pt-BR'
                     value={picker}
                     onChange={(date) => setPicker(date)}
                   />

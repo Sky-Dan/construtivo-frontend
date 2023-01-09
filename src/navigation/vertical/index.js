@@ -3,9 +3,9 @@ import { Play, List, Book, Plus, Users } from 'react-feather';
 const defaultRoutes = [
   {
     id: 'start',
-    title: 'Iniciar Atividade',
+    title: 'Avaliar aluno',
     icon: <Play size={20} />,
-    navLink: '/iniciar',
+    navLink: '/avaliacao',
   },
   {
     id: 'relatorios',

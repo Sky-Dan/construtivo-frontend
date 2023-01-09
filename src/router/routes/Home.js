@@ -20,7 +20,7 @@ const HomeRoutes = [
     },
   },
   {
-    path: '/iniciar',
+    path: '/avaliacao',
     exact: true,
     component: lazy(() => import('../../views/start/')),
     meta: {
