@@ -15,6 +15,7 @@ import { ErrorToast, SuccessToast } from '../components/toasts/Error';
 const usersList = () => {
   const [students, setStudents] = useState([]);
   const [modale, setModale] = useState(false);
+  const [exclude, setExclude] = useState();
 
   const handleResults = async () => {
     try {
@@ -74,7 +75,10 @@ const usersList = () => {
                     {formatDateHour(student.avaliation_date)}
                   </span>
                   <br></br>
-                  <Button outline color="danger" size="sm" onClick={ () => setModale(true) }>Excluir</Button>
+                  <Button outline color="danger" size="sm" onClick={ () => {
+                      setModale(true)
+                      setExclude(student.registration)
+                    } }>Excluir</Button>
                 </td>
                 <Modal isOpen={modale}>
                   <ModalHeader>Deseja prosseguir?</ModalHeader>
@@ -82,7 +86,7 @@ const usersList = () => {
                     Ao continuar, o estudante e todos os seus registros serão excluídos.
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="danger" onClick={ () => deleteStudent(student.registration) }>Excluir</Button>{' '}
+                    <Button color="danger" onClick={ () => deleteStudent(exclude) }>Excluir</Button>{' '}
                     <Button color="success" onClick={ () => setModale(false) }>Cancelar</Button>
                   </ModalFooter>
                 </Modal>
