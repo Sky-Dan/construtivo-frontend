@@ -8,7 +8,6 @@ import {
 } from 'reactstrap';
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
-import { formatDateHour } from '../../utility/Utils';
 import { toast } from 'react-toastify';
 import { ErrorToast, SuccessToast } from '../components/toasts/Error';
 
@@ -16,6 +15,7 @@ const usersList = () => {
   const [students, setStudents] = useState([]);
   const [modale, setModale] = useState(false);
   const [exclude, setExclude] = useState();
+  
 
   const handleResults = async () => {
     try {
@@ -72,7 +72,7 @@ const usersList = () => {
                 </td>
                 <td>
                   <span className="align-middle">
-                    {formatDateHour(student.avaliation_date)}
+                    {new Date(student.avaliation_date).toLocaleString('pt-BR')}
                   </span>
                   <br></br>
                   <Button outline color="danger" size="sm" onClick={ () => {

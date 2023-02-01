@@ -1,6 +1,7 @@
-import { Table } from 'reactstrap';
+import { Table, Input, Label } from 'reactstrap';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
+// import { formatDateHour } from '../../utility/Utils';
 
 const notasUsersResume = () => {
   const [registrations, setRegistrations] = useState([]);
@@ -25,8 +26,10 @@ const notasUsersResume = () => {
         if (registro.registration) {
           registration.push({
             registration: registro.registration,
+            name: Number(registro.name) ? null : String(registro.name),
             grade: Number(registro.grade) ? Number(registro.grade) : 0,
-            briefing: Number(registro.grade) ? null : String(registro.grade)
+            briefing: Number(registro.grade) ? null : String(registro.grade),
+            avaliation_date: String(new Date(registro.avaliation_date))
           });
         }
       } else {
@@ -44,21 +47,24 @@ const notasUsersResume = () => {
 
   useEffect(() => {
     handleResults();
-  }, []);
+  }, [registration]);
 
   useEffect(() => {
     saveRegistro();
   }, [registrations]);
   return (
     <>
+
       <h1>Resumo</h1>
       {!group ? null : (
         <Table responsive>
           <thead>
             <tr>
               <th>REGISTRO</th>
+              <th>NOME</th>
               <th>SOMA DOS ACERTOS</th>
               <th>BRIEFING</th>
+              <th>DATA AVALIAÇÃO</th>
             </tr>
           </thead>
           <tbody>
@@ -68,10 +74,16 @@ const notasUsersResume = () => {
                   <span className="align-middle">{regi.registration}</span>
                 </td>
                 <td>
+                  <span className="align-middle">{regi.name}</span>
+                </td>
+                <td>
                   <span className="align-middle">{regi.grade}</span>
                 </td>
                 <td>
                   <span className="align-middle">{regi.briefing}</span>
+                </td>
+                <td>
+                  <span className="align-middle">{new Date(regi.avaliation_date).toLocaleString('pt-BR')}</span>
                 </td>
               </tr>
             ))}

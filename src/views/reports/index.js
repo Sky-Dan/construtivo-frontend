@@ -12,14 +12,12 @@ const notasUsers = () => {
     try {
       const results = await api.get(`/results/stage/${stage}?name=${name}`);
       setNotas(results.data.results);
-      console.log(notas);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    console.log(notas);
     handleResults();
   }, [notas]);
 
@@ -43,6 +41,7 @@ const notasUsers = () => {
               <th>NOME</th>
               <th>ACERTOS</th>
               <th>DATA DE AVALIAÇÃO</th>
+              <th>DATA DE SINCRONIZAÇÃO</th>
             </tr>
           </thead>
           <tbody>
@@ -58,7 +57,10 @@ const notasUsers = () => {
                   <span className="align-middle">{nota.grade}</span>
                 </td>
                 <td>
-                  <span className='align-middle'>{nota.created_at}</span>
+                  <span className='align-middle'>{new Date(nota.avaliation_date).toLocaleString('pt-BR')}</span>
+                </td>
+                <td>
+                  <span className='align-middle'>{new Date(nota.created_at).toLocaleString('pt-BR')}</span>
                 </td>
               </tr>
             ))}
