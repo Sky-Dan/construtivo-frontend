@@ -1,4 +1,4 @@
-import useJwt from '@src/@core/auth/jwt/useJwt';
+import useJwt from './jwt/useJwt';
 
 /**
  * Return if user is logged in
@@ -8,13 +8,13 @@ import useJwt from '@src/@core/auth/jwt/useJwt';
 // eslint-disable-next-line arrow-body-style
 export const isUserLoggedIn = () => {
   return (
-    localStorage.getItem('@escolaAnalytics:userData') &&
+    localStorage.getItem('@ajinomotoSafeLife:userData') &&
     localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
   );
 };
 
 export const getUserData = () =>
-  JSON.parse(localStorage.getItem('@escolaAnalytics:userData'));
+  JSON.parse(localStorage.getItem('@ajinomotoSafeLife:userData'));
 
 /**
  * This function is used for demo purpose route navigation

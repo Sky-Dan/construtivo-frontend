@@ -9,7 +9,7 @@ import { ErrorToast, SuccessToast } from '../views/components/toasts/Error';
 import { removeLocalstorageAsJson } from '../utility/Utils';
 
 const initialUser = () => {
-  const item = window.localStorage.getItem('@escolaAnalytics:userData');
+  const item = window.localStorage.getItem('@ajinomotoSafeLife:userData');
   //** Parse stored json or if none return initialValue
   return item ? JSON.parse(item) : {};
 };
@@ -42,7 +42,7 @@ export const handleConnect = createAsyncThunk(
         };
       }
 
-      saveLocalstorageAsJson('@escolaAnalytics:userData', response);
+      saveLocalstorageAsJson('@ajinomotoSafeLife:userData', response);
 
       window.location.href = '/';
 
@@ -77,7 +77,7 @@ export const authSlice = createSlice({
     handleLogout: (state) => {
       state.userData = {};
       state.isConnected = false;
-      removeLocalstorageAsJson('@escolaAnalytics:userData');
+      removeLocalstorageAsJson('@ajinomotoSafeLife:userData');
 
       window.location.href = '/';
       toast.success(<SuccessToast description="Disconnected with success " />, {

@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { Row, Col, CardTitle, CardText, Form, Label, Input, Button } from 'reactstrap'
 
 // ** Utils
-import { isUserLoggedIn } from '@utils'
+import { isUserLoggedIn } from '../../../utility/Utils'
 
 // ** Custom Hooks
 import { useSkin } from '@hooks/useSkin'
