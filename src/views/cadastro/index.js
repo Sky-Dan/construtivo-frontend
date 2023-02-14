@@ -39,7 +39,7 @@ const createUser = () => {
       });
       history.push('/dash');
     } catch (error) {
-      console.log(error.length());
+      console.log(error);
       toast.error(<ErrorToast description="Erro: Usuário não criado!" />, {
         icon: false,
         hideProgressBar: true,

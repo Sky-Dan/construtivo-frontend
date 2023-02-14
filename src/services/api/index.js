@@ -8,5 +8,14 @@ export const api = axiosLibrary.create({
 });
 
 if (user) {
-  api.defaults.headers.common['authorization'] = `Bearer ${user.token}`;
+    api.get('/sessions/', {
+      headers: {
+        authorization : `Bearer ${user.token}`
+      }
+    }).then(() => {
+      api.defaults.headers.common['authorization'] = `Bearer ${user.token}`;
+    }).catch(() => {
+      localStorage.removeItem('@ajinomotoSafeLife:userData');
+    })
+
 }

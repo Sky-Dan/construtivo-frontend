@@ -13,6 +13,8 @@ export const isUserLoggedIn = () => {
   );
 };
 
+console.log('user logged', isUserLoggedIn())
+
 export const getUserData = () =>
   JSON.parse(localStorage.getItem('@ajinomotoSafeLife:userData'));
 

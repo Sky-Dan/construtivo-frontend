@@ -20,6 +20,7 @@ const usersList = () => {
   const handleResults = async () => {
     try {
       const results = await api.get(`/students`);
+      console.log(results)
 
       setStudents(results.data.students);
       console.log(students);

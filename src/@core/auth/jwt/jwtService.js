@@ -93,6 +93,7 @@ export default class JwtService {
   }
 
   login(...args) {
+    console.log('login args', ...args)
     return axios.post(this.jwtConfig.loginEndpoint, ...args)
   }
 
@@ -101,6 +102,7 @@ export default class JwtService {
   }
 
   refreshToken() {
+    console.log('refresh args', ...args)
     return axios.post(this.jwtConfig.refreshEndpoint, {
       refreshToken: this.getRefreshToken()
     })

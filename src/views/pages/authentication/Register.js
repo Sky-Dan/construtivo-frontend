@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 // ** Custom Hooks
 import { useSkin } from '@hooks/useSkin'
-import useJwt from '@src/auth/jwt/useJwt'
+import useJwt from '../../../auth/jwt/useJwt'
 
 // ** Store & Actions
 import { useDispatch } from 'react-redux'
