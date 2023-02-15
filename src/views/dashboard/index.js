@@ -1,12 +1,28 @@
 import { Row, Col } from 'reactstrap';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { api } from '../../services/api';
 import '@styles/react/libs/charts/apex-charts.scss';
 import '@styles/base/pages/dashboard-ecommerce.scss';
 import StatsHorizontal from '@components/widgets/stats/StatsHorizontal';
 import { Box } from 'react-feather';
+import { WarningToast } from '../components/toasts/Error';
 
 const AnalyticsDashboard = () => {
   const color = 'dark';
+  const check = () => {
+    api.get('/sessions').catch(() => {
+          localStorage.removeItem('@ajinomotoSafeLife:userData');
+          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+            icon: false,
+            hideProgressBar: true,
+          })
+          window.location.reload();
+        }
+      );
+  }
+
+  check();
   return (
     <div id="dashboard-ecommerce">
       <Row className="match-height">

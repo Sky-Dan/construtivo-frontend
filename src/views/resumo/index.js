@@ -1,12 +1,28 @@
 import { Table, Input, Label } from 'reactstrap';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
+import { toast } from 'react-toastify'
+import { WarningToast } from '../components/toasts/Error';
 // import { formatDateHour } from '../../utility/Utils';
 
 const notasUsersResume = () => {
   const [registrations, setRegistrations] = useState([]);
   const [registration, setRegistration] = useState([]);
   const [group, setGroup] = useState([]);
+
+  const check = () => {
+    api.get('/sessions').catch(() => {
+          localStorage.removeItem('@ajinomotoSafeLife:userData');
+          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+            icon: false,
+            hideProgressBar: true,
+          })
+          window.location.reload();
+        }
+      );
+  }
+
+  check();
 
   const handleResults = async () => {
     try {

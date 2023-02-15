@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '@styles/base/pages/page-auth.scss';
 import DateTimePicker from 'react-datetime-picker';
 import { toast } from 'react-toastify';
-import { ErrorToast, SuccessToast } from '../components/toasts/Error';
+import { ErrorToast, SuccessToast, WarningToast } from '../components/toasts/Error';
 import { api } from '../../services/api';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -25,6 +25,20 @@ const createUser = () => {
   const [picker, setPicker] = useState(new Date());
   console.log(setPicker);
 
+  const check = () => {
+    api.get('/sessions').catch(() => {
+          localStorage.removeItem('@ajinomotoSafeLife:userData');
+          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+            icon: false,
+            hideProgressBar: true,
+          })
+          window.location.reload();
+        }
+      );
+  }
+
+  check();
+
   async function onSubmit() {
     try {
       await api.post('/students', {
@@ -44,6 +58,7 @@ const createUser = () => {
         icon: false,
         hideProgressBar: true,
       });
+      window.location.reload()
     }
   }
 

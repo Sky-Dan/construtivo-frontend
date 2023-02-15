@@ -2,30 +2,48 @@ import { useState } from 'react';
 import { Input, Button, Label } from 'reactstrap';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
-import { ErrorToast, SuccessToast } from '../components/toasts/Error';
+import { ErrorToast, SuccessToast, WarningToast} from '../components/toasts/Error';
 
 const start = () => {
   const [register, setRegister] = useState('');
 
+  const check = () => {
+    api.get('/sessions').catch(() => {
+          localStorage.removeItem('@ajinomotoSafeLife:userData');
+          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+            icon: false,
+            hideProgressBar: true,
+          })
+          window.location.reload();
+        }
+      );
+  }
+
+  check();
+
   const postBriefing = async (avaliation) => {
     try {
-    
-      await api.post(`/results/`, {
-        stage: 7,
-        registration: register,
-        grade: avaliation,
-      });
 
-      toast.success(<SuccessToast description="Avalição enviada!" />, {
-        icon: false,
-        hideProgressBar: true,
-      });
+      if (register !== '') {
+    
+        await api.post(`/results/`, {
+          stage: 7,
+          registration: register,
+          grade: avaliation,
+        });
+
+        toast.success(<SuccessToast description="Avalição enviada!" />, {
+          icon: false,
+          hideProgressBar: true,
+        });
+      }
     } catch {
       console.log(error);
       toast.error(<ErrorToast description="Avaliação inválida!" />, {
         icon: false,
         hideProgressBar: true,
       });
+      window.location.reload()
     }
   };
 

@@ -9,12 +9,26 @@ import {
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
-import { ErrorToast, SuccessToast } from '../components/toasts/Error';
+import { ErrorToast, SuccessToast, WarningToast } from '../components/toasts/Error';
 
 const usersList = () => {
   const [students, setStudents] = useState([]);
   const [modale, setModale] = useState(false);
   const [exclude, setExclude] = useState();
+
+  const check = () => {
+    api.get('/sessions').catch(() => {
+          localStorage.removeItem('@ajinomotoSafeLife:userData');
+          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+            icon: false,
+            hideProgressBar: true,
+          })
+          window.location.reload();
+        }
+      );
+  }
+
+  check();
   
 
   const handleResults = async () => {
@@ -39,6 +53,7 @@ const usersList = () => {
         hideProgressBar: true,
       });
     } catch (error) {
+      window.location.reload()
       toast.error(<ErrorToast description={error.message} />, {
         icon: false,
         hideProgressBar: true,
