@@ -19,7 +19,7 @@ if (user) {
     api.defaults.headers.common['authorization'] = `Bearer ${user.token}`;
   }).catch(() => {
     localStorage.removeItem('@ajinomotoSafeLife:userData');
-    toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+    toast.warning(<WarningToast description= 'Sua sessão foi encerrada. Por favor faça novamente login' />, {
       icon: false,
       hideProgressBar: true,
     });

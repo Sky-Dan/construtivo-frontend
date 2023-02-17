@@ -28,7 +28,7 @@ const createUser = () => {
   const check = () => {
     api.get('/sessions').catch(() => {
           localStorage.removeItem('@ajinomotoSafeLife:userData');
-          toast.warning(<WarningToast description= 'Sessão Expirada' />, {
+          toast.warning(<WarningToast description= 'Sua sessão foi encerrada. Por favor faça novamente login' />, {
             icon: false,
             hideProgressBar: true,
           })
