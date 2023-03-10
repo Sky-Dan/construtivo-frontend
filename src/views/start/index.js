@@ -32,7 +32,7 @@ const start = () => {
           grade: avaliation,
         })
 
-        toast.success(<SuccessToast description="User criado com Sucesso!" />, {
+        toast.success(<SuccessToast description="Avalição enviada!" />, {
           icon: false,
           hideProgressBar: true,
         });

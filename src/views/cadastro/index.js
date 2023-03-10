@@ -47,7 +47,7 @@ const createUser = () => {
         avaliation_date: picker,
       });
 
-      toast.success(<SuccessToast description="User criado com Sucesso!" />, {
+      toast.success(<SuccessToast description="Usuário criado com Sucesso!" />, {
         icon: false,
         hideProgressBar: true,
       });
