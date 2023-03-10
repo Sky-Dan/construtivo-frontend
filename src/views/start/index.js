@@ -37,6 +37,8 @@ const start = () => {
           hideProgressBar: true,
         });
       }
+
+      history.push('/dash');
     } catch {
       console.log(error);
       toast.error(<ErrorToast description="Avaliação inválida!" />, {
@@ -59,20 +61,20 @@ const start = () => {
           onChange={(e) => setRegister(e.target.value)}
         />
         <div className="m-5 text-center">
-        <Button
-          className="m-4 mt-3"
-          color="primary"
-          onClick={() => postBriefing('O briefing está de acordo')}
-        >
-          Satisfatório
-        </Button>
-        <Button
-          className="m-4 mt-3"
-          color="primary"
-          onClick={() => postBriefing('O briefing não está de acordo')}
-        >
-          Não Satisfatório
-        </Button>
+          <Button
+            className="m-4 mt-3"
+            color="primary"
+            onClick={() => postBriefing('O briefing está de acordo')}
+          >
+            Satisfatório
+          </Button>
+          <Button
+            className="m-4 mt-3"
+            color="primary"
+            onClick={() => postBriefing('O briefing não está de acordo')}
+          >
+            Não Satisfatório
+          </Button>
         </div>
       </div>
     </>
