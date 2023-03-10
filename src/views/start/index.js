@@ -3,9 +3,11 @@ import { Input, Button, Label } from 'reactstrap';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
 import { ErrorToast, SuccessToast, WarningToast} from '../components/toasts/Error';
+import { useHistory } from 'react-router-dom';
 
 const start = () => {
   const [register, setRegister] = useState('');
+  const history = useHistory();
 
   const check = () => {
     api.get('/sessions').catch(() => {
@@ -21,33 +23,31 @@ const start = () => {
 
   check();
 
-  const postBriefing = async (avaliation) => {
-    try {
-
-      if (register !== '') {
-    
+  async function onSubmit(avaliation) {
+    if (register !== '') {
+      try {
         await api.post(`/results/`, {
           stage: 7,
           registration: register,
           grade: avaliation,
-        });
+        })
 
-        toast.success(<SuccessToast description="Avalição enviada!" />, {
+        toast.success(<SuccessToast description="User criado com Sucesso!" />, {
           icon: false,
           hideProgressBar: true,
         });
+        history.push('/dash')
+      } catch (error) {
+        console.log(error);
+        toast.error(<ErrorToast description="Avaliação inválida!" />, {
+          icon: false,
+          hideProgressBar: true,
+        });
+        window.location.reload()
       }
-
-      history.push('/dash');
-    } catch {
-      console.log(error);
-      toast.error(<ErrorToast description="Avaliação inválida!" />, {
-        icon: false,
-        hideProgressBar: true,
-      });
-      window.location.reload()
     }
   };
+  
 
   return (
     <>
@@ -64,14 +64,14 @@ const start = () => {
           <Button
             className="m-4 mt-3"
             color="primary"
-            onClick={() => postBriefing('O briefing está de acordo')}
+            onClick={() => onSubmit('O briefing está de acordo')}
           >
             Satisfatório
           </Button>
           <Button
             className="m-4 mt-3"
             color="primary"
-            onClick={() => postBriefing('O briefing não está de acordo')}
+            onClick={() => onSubmit('O briefing não está de acordo')}
           >
             Não Satisfatório
           </Button>
